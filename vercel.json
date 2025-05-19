@@ -10,5 +10,7 @@
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/(.*)",         "dest": "/index.html" }
-  ]
+  ],
+  "installCommand": "bun install",
+  "buildCommand": "bun run build"
 }
