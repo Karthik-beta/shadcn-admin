@@ -19,7 +19,7 @@ export function ProfileDropdown() {
         <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
           <Avatar className='h-8 w-8'>
             <AvatarImage src='/avatars/01.png' alt='@shadcn' />
-            <AvatarFallback>SN</AvatarFallback>
+            <AvatarFallback>KP</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -28,7 +28,7 @@ export function ProfileDropdown() {
           <div className='flex flex-col space-y-1'>
             <p className='text-sm leading-none font-medium'>satnaing</p>
             <p className='text-muted-foreground text-xs leading-none'>
-              satnaingdev@gmail.com
+              karthik@pivotr.in
             </p>
           </div>
         </DropdownMenuLabel>
