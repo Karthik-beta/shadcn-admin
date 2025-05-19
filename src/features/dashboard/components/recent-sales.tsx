@@ -1,83 +1,53 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { faker } from '@faker-js/faker'
+
+const transactions = Array.from({ length: 5 }, () => {
+  const userName = faker.name.fullName({ firstName: faker.name.firstName('male'), lastName: faker.name.lastName() });
+  return {
+    itemName: faker.commerce.productName(),
+    transactionType: faker.helpers.arrayElement(['Stock In', 'Stock Out']),
+    quantity: faker.number.int({ min: 1, max: 100 }),
+    avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=random&rounded=true`,
+    userName,
+    userEmail: faker.internet.email(),
+  }
+})
 
 export function RecentSales() {
   return (
-    <div className='space-y-8'>
-      <div className='flex items-center gap-4'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/01.png' alt='Avatar' />
-          <AvatarFallback>OM</AvatarFallback>
-        </Avatar>
-        <div className='flex flex-1 flex-wrap items-center justify-between'>
-          <div className='space-y-1'>
-            <p className='text-sm leading-none font-medium'>Olivia Martin</p>
-            <p className='text-muted-foreground text-sm'>
-              olivia.martin@email.com
-            </p>
+    <div className='space-y-2'>
+      {transactions.map((transaction, index) => (
+        <div key={index} className='flex items-center gap-3 p-3 rounded-lg border shadow-sm'>
+          <Avatar className='h-10 w-10 flex-shrink-0'>
+            <AvatarImage src={transaction.avatar} alt={transaction.userName} />
+            <AvatarFallback>
+              {transaction.userName
+                .split(' ')
+                .map((name) => name[0])
+                .join('')}
+            </AvatarFallback>
+          </Avatar>
+          <div className='flex-1 flex justify-between min-w-0'>
+            {/* User information column */}
+            <div className='min-w-0 max-w-[45%]'>
+              <p className='text-sm font-medium leading-none truncate'>{transaction.userName}</p>
+              <p className='text-xs text-muted-foreground truncate'>{transaction.userEmail}</p>
+            </div>
+            
+            {/* Transaction information column */}
+            <div className='text-right min-w-0 max-w-[45%]'>
+              <p className='text-sm font-medium truncate'>{transaction.itemName}</p>
+              <div className={`inline-flex items-center mt-0.5 px-1.5 py-0.5 rounded-md text-xs font-medium ${
+                transaction.transactionType === 'Stock In' 
+                  ? 'bg-green-100 text-green-800' 
+                  : 'bg-red-100 text-red-800'
+              }`}>
+                {transaction.transactionType} - {transaction.quantity} units
+              </div>
+            </div>
           </div>
-          <div className='font-medium'>+$1,999.00</div>
         </div>
-      </div>
-      <div className='flex items-center gap-4'>
-        <Avatar className='flex h-9 w-9 items-center justify-center space-y-0 border'>
-          <AvatarImage src='/avatars/02.png' alt='Avatar' />
-          <AvatarFallback>JL</AvatarFallback>
-        </Avatar>
-        <div className='flex flex-1 flex-wrap items-center justify-between'>
-          <div className='space-y-1'>
-            <p className='text-sm leading-none font-medium'>Jackson Lee</p>
-            <p className='text-muted-foreground text-sm'>
-              jackson.lee@email.com
-            </p>
-          </div>
-          <div className='font-medium'>+$39.00</div>
-        </div>
-      </div>
-      <div className='flex items-center gap-4'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/03.png' alt='Avatar' />
-          <AvatarFallback>IN</AvatarFallback>
-        </Avatar>
-        <div className='flex flex-1 flex-wrap items-center justify-between'>
-          <div className='space-y-1'>
-            <p className='text-sm leading-none font-medium'>Isabella Nguyen</p>
-            <p className='text-muted-foreground text-sm'>
-              isabella.nguyen@email.com
-            </p>
-          </div>
-          <div className='font-medium'>+$299.00</div>
-        </div>
-      </div>
-
-      <div className='flex items-center gap-4'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/04.png' alt='Avatar' />
-          <AvatarFallback>WK</AvatarFallback>
-        </Avatar>
-        <div className='flex flex-1 flex-wrap items-center justify-between'>
-          <div className='space-y-1'>
-            <p className='text-sm leading-none font-medium'>William Kim</p>
-            <p className='text-muted-foreground text-sm'>will@email.com</p>
-          </div>
-          <div className='font-medium'>+$99.00</div>
-        </div>
-      </div>
-
-      <div className='flex items-center gap-4'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/05.png' alt='Avatar' />
-          <AvatarFallback>SD</AvatarFallback>
-        </Avatar>
-        <div className='flex flex-1 flex-wrap items-center justify-between'>
-          <div className='space-y-1'>
-            <p className='text-sm leading-none font-medium'>Sofia Davis</p>
-            <p className='text-muted-foreground text-sm'>
-              sofia.davis@email.com
-            </p>
-          </div>
-          <div className='font-medium'>+$39.00</div>
-        </div>
-      </div>
+      ))}
     </div>
   )
 }

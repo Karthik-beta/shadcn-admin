@@ -1,48 +1,62 @@
 import {
-  IconBarrierBlock,
   IconBrowserCheck,
-  IconBug,
-  IconChecklist,
-  IconError404,
   IconHelp,
   IconLayoutDashboard,
-  IconLock,
-  IconLockAccess,
-  IconMessages,
   IconNotification,
   IconPackages,
   IconPalette,
-  IconServerOff,
   IconSettings,
   IconTool,
   IconUserCog,
-  IconUserOff,
-  IconUsers,
+  IconBuildingWarehouse,
+  IconAdjustmentsHorizontal,
+  IconShoppingCart,
+  IconShoppingBag,
+  // IconReceipt,
+  IconWallet,
+  IconFileText,
+  IconReceipt,
+  IconInbox,
+  IconPackage,
+  IconCreditCard,
+  IconCash,
+  IconReceiptRefund,
+  IconNote,
+  IconUserCircle,
+  IconClipboardList,
+  IconClipboardCheck,
+  IconFileInvoice,
+  IconArrowBack,
+  IconTruck,
+  IconBuildingStore,
 } from '@tabler/icons-react'
-import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
+import { UserCheck, Contact, Boxes } from 'lucide-react'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
+    name: 'Karthik',
+    email: 'karthik@pivotr.in',
     avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: 'Shadcn Admin',
-      logo: Command,
-      plan: 'Vite + ShadcnUI',
+      name: 'Inventory',
+      // logo: Command,
+      logo: Boxes,
+      plan: 'by Pivotr',
     },
     {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      name: 'CRM',
+      // logo: GalleryVerticalEnd,
+      logo: Contact,
+      plan: 'by Pivotr',
     },
     {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
+      name: 'HR',
+      // logo: AudioWaveform,
+      logo: UserCheck,
+      plan: 'by Pivotr',
     },
   ],
   navGroups: [
@@ -53,92 +67,204 @@ export const sidebarData: SidebarData = {
           title: 'Dashboard',
           url: '/',
           icon: IconLayoutDashboard,
-        },
-        {
-          title: 'Tasks',
-          url: '/tasks',
-          icon: IconChecklist,
-        },
-        {
-          title: 'Apps',
-          url: '/apps',
-          icon: IconPackages,
-        },
-        {
-          title: 'Chats',
-          url: '/chats',
-          badge: '3',
-          icon: IconMessages,
-        },
-        {
-          title: 'Users',
-          url: '/users',
-          icon: IconUsers,
-        },
+        }
       ],
     },
     {
-      title: 'Pages',
+      title: 'Inventory',
       items: [
         {
-          title: 'Auth',
-          icon: IconLockAccess,
+          title: 'Inventory',
+          icon: IconBuildingWarehouse,
           items: [
             {
-              title: 'Sign In',
-              url: '/sign-in',
+              title: 'Items',
+              url: '/inventory/items',
+              icon: IconPackage,
             },
             {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
+              title: 'Items Groups',
+              url: '/inventory/itemsGroups',
+              icon: IconPackages,
             },
             {
-              title: 'Sign Up',
-              url: '/sign-up',
+              title: 'Price Lists',
+              url: '/inventory/pricelists',
+              icon: IconReceipt,
             },
             {
-              title: 'Forgot Password',
-              url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
+              title: 'Adjustments',
+              url: '/inventory/adjustments',
+              icon: IconAdjustmentsHorizontal,
             },
           ],
-        },
-        {
-          title: 'Errors',
-          icon: IconBug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/401',
-              icon: IconLock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/403',
-              icon: IconUserOff,
-            },
-            {
-              title: 'Not Found',
-              url: '/404',
-              icon: IconError404,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/500',
-              icon: IconServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/503',
-              icon: IconBarrierBlock,
-            },
-          ],
-        },
-      ],
+        }
+      ]
     },
+    {
+      title: 'Sales',
+      items: [
+        {
+          title: 'Sales',
+          icon: IconShoppingCart,
+          items: [
+            {
+              title: 'Customers',
+              url: '/sales/customers',
+              icon: IconUserCircle,
+            },
+            {
+              title: 'Sales Orders',
+              url: '/sales/salesOrders',
+              icon: IconClipboardList,
+            },
+            {
+              title: 'Packages',
+              url: '/sales/packages',
+              icon: IconPackage,
+            },
+            {
+              title: 'Shipments',
+              url: '/sales/shipments',
+              icon: IconTruck,
+            },
+            {
+              title: 'Delivery Challans',
+              url: '/sales/deliveryChallans',
+              icon: IconFileInvoice,
+            },
+            {
+              title: 'Invoices',
+              url: '/sales/invoices',
+              icon: IconFileText,
+            },
+            {
+              title: 'Payments Received',
+              url: '/sales/paymentsReceived',
+              icon: IconCash,
+            },
+            {
+              title: 'Sales Returns',
+              url: '/sales/salesReturns',
+              icon: IconArrowBack,
+            },
+            {
+              title: 'Credit Notes',
+              url: '/sales/credit-notes',
+              icon: IconNote,
+            },
+          ],
+        }
+      ]
+    },
+    {
+      title: 'Purchases',
+      items: [
+        {
+          title: 'Purchases',
+          icon: IconShoppingBag,
+          items: [
+            {
+              title: 'Vendors',
+              url: '/500',
+              icon: IconBuildingStore,
+            },
+            {
+              title: 'Expenses',
+              url: '/500',
+              icon: IconWallet,
+            },
+            {
+              title: 'Purchase Orders',
+              url: '/500',
+              icon: IconClipboardCheck,
+            },
+            {
+              title: 'Purchase Receives',
+              url: '/500',
+              icon: IconInbox,
+            },
+            {
+              title: 'Bills',
+              url: '/500',
+              icon: IconFileInvoice,
+            },
+            {
+              title: 'Payments Made',
+              url: '/500',
+              icon: IconCreditCard,
+            },
+            {
+              title: 'Vendor Credits',
+              url: '/500',
+              icon: IconReceiptRefund,
+            },
+          ],
+        }
+      ]
+    },
+    // {
+    //   title: 'Pages',
+    //   items: [
+    //     {
+    //       title: 'Auth',
+    //       icon: IconLockAccess,
+    //       items: [
+    //         {
+    //           title: 'Sign In',
+    //           url: '/sign-in',
+    //         },
+    //         {
+    //           title: 'Sign In (2 Col)',
+    //           url: '/sign-in-2',
+    //         },
+    //         {
+    //           title: 'Sign Up',
+    //           url: '/sign-up',
+    //         },
+    //         {
+    //           title: 'Forgot Password',
+    //           url: '/forgot-password',
+    //         },
+    //         {
+    //           title: 'OTP',
+    //           url: '/otp',
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Errors',
+    //       icon: IconBug,
+    //       items: [
+    //         {
+    //           title: 'Unauthorized',
+    //           url: '/401',
+    //           icon: IconLock,
+    //         },
+    //         {
+    //           title: 'Forbidden',
+    //           url: '/403',
+    //           icon: IconUserOff,
+    //         },
+    //         {
+    //           title: 'Not Found',
+    //           url: '/404',
+    //           icon: IconError404,
+    //         },
+    //         {
+    //           title: 'Internal Server Error',
+    //           url: '/500',
+    //           icon: IconServerOff,
+    //         },
+    //         {
+    //           title: 'Maintenance Error',
+    //           url: '/503',
+    //           icon: IconBarrierBlock,
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       title: 'Other',
       items: [

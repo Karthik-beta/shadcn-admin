@@ -8,6 +8,8 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
@@ -34,6 +36,48 @@ import { Route as AuthenticatedSettingsNotificationsImport } from './routes/_aut
 import { Route as AuthenticatedSettingsDisplayImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountImport } from './routes/_authenticated/settings/account'
+
+// Create Virtual Routes
+
+const AuthenticatedSalesShipmentsLazyImport = createFileRoute(
+  '/_authenticated/sales/shipments',
+)()
+const AuthenticatedSalesSalesReturnsLazyImport = createFileRoute(
+  '/_authenticated/sales/salesReturns',
+)()
+const AuthenticatedSalesSalesOrdersLazyImport = createFileRoute(
+  '/_authenticated/sales/salesOrders',
+)()
+const AuthenticatedSalesPaymentsReceivedLazyImport = createFileRoute(
+  '/_authenticated/sales/paymentsReceived',
+)()
+const AuthenticatedSalesPackagesLazyImport = createFileRoute(
+  '/_authenticated/sales/packages',
+)()
+const AuthenticatedSalesInvoicesLazyImport = createFileRoute(
+  '/_authenticated/sales/invoices',
+)()
+const AuthenticatedSalesDeliveryChallansLazyImport = createFileRoute(
+  '/_authenticated/sales/deliveryChallans',
+)()
+const AuthenticatedSalesCustomersLazyImport = createFileRoute(
+  '/_authenticated/sales/customers',
+)()
+const AuthenticatedSalesCreditNotesLazyImport = createFileRoute(
+  '/_authenticated/sales/credit-notes',
+)()
+const AuthenticatedInventoryPricelistsLazyImport = createFileRoute(
+  '/_authenticated/inventory/pricelists',
+)()
+const AuthenticatedInventoryItemsGroupsLazyImport = createFileRoute(
+  '/_authenticated/inventory/itemsGroups',
+)()
+const AuthenticatedInventoryItemsLazyImport = createFileRoute(
+  '/_authenticated/inventory/items',
+)()
+const AuthenticatedInventoryAdjustmentsLazyImport = createFileRoute(
+  '/_authenticated/inventory/adjustments',
+)()
 
 // Create/Update Routes
 
@@ -154,6 +198,139 @@ const AuthenticatedAppsIndexRoute = AuthenticatedAppsIndexImport.update({
   path: '/apps/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+
+const AuthenticatedSalesShipmentsLazyRoute =
+  AuthenticatedSalesShipmentsLazyImport.update({
+    id: '/sales/shipments',
+    path: '/sales/shipments',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/shipments.lazy').then((d) => d.Route),
+  )
+
+const AuthenticatedSalesSalesReturnsLazyRoute =
+  AuthenticatedSalesSalesReturnsLazyImport.update({
+    id: '/sales/salesReturns',
+    path: '/sales/salesReturns',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/salesReturns.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedSalesSalesOrdersLazyRoute =
+  AuthenticatedSalesSalesOrdersLazyImport.update({
+    id: '/sales/salesOrders',
+    path: '/sales/salesOrders',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/salesOrders.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedSalesPaymentsReceivedLazyRoute =
+  AuthenticatedSalesPaymentsReceivedLazyImport.update({
+    id: '/sales/paymentsReceived',
+    path: '/sales/paymentsReceived',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/paymentsReceived.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedSalesPackagesLazyRoute =
+  AuthenticatedSalesPackagesLazyImport.update({
+    id: '/sales/packages',
+    path: '/sales/packages',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/packages.lazy').then((d) => d.Route),
+  )
+
+const AuthenticatedSalesInvoicesLazyRoute =
+  AuthenticatedSalesInvoicesLazyImport.update({
+    id: '/sales/invoices',
+    path: '/sales/invoices',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/invoices.lazy').then((d) => d.Route),
+  )
+
+const AuthenticatedSalesDeliveryChallansLazyRoute =
+  AuthenticatedSalesDeliveryChallansLazyImport.update({
+    id: '/sales/deliveryChallans',
+    path: '/sales/deliveryChallans',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/deliveryChallans.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedSalesCustomersLazyRoute =
+  AuthenticatedSalesCustomersLazyImport.update({
+    id: '/sales/customers',
+    path: '/sales/customers',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/customers.lazy').then((d) => d.Route),
+  )
+
+const AuthenticatedSalesCreditNotesLazyRoute =
+  AuthenticatedSalesCreditNotesLazyImport.update({
+    id: '/sales/credit-notes',
+    path: '/sales/credit-notes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/sales/credit-notes.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedInventoryPricelistsLazyRoute =
+  AuthenticatedInventoryPricelistsLazyImport.update({
+    id: '/inventory/pricelists',
+    path: '/inventory/pricelists',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/inventory/pricelists.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedInventoryItemsGroupsLazyRoute =
+  AuthenticatedInventoryItemsGroupsLazyImport.update({
+    id: '/inventory/itemsGroups',
+    path: '/inventory/itemsGroups',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/inventory/itemsGroups.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const AuthenticatedInventoryItemsLazyRoute =
+  AuthenticatedInventoryItemsLazyImport.update({
+    id: '/inventory/items',
+    path: '/inventory/items',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/inventory/items.lazy').then((d) => d.Route),
+  )
+
+const AuthenticatedInventoryAdjustmentsLazyRoute =
+  AuthenticatedInventoryAdjustmentsLazyImport.update({
+    id: '/inventory/adjustments',
+    path: '/inventory/adjustments',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/inventory/adjustments.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 
 const AuthenticatedSettingsNotificationsRoute =
   AuthenticatedSettingsNotificationsImport.update({
@@ -306,6 +483,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsNotificationsImport
       parentRoute: typeof AuthenticatedSettingsRouteImport
     }
+    '/_authenticated/inventory/adjustments': {
+      id: '/_authenticated/inventory/adjustments'
+      path: '/inventory/adjustments'
+      fullPath: '/inventory/adjustments'
+      preLoaderRoute: typeof AuthenticatedInventoryAdjustmentsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/inventory/items': {
+      id: '/_authenticated/inventory/items'
+      path: '/inventory/items'
+      fullPath: '/inventory/items'
+      preLoaderRoute: typeof AuthenticatedInventoryItemsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/inventory/itemsGroups': {
+      id: '/_authenticated/inventory/itemsGroups'
+      path: '/inventory/itemsGroups'
+      fullPath: '/inventory/itemsGroups'
+      preLoaderRoute: typeof AuthenticatedInventoryItemsGroupsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/inventory/pricelists': {
+      id: '/_authenticated/inventory/pricelists'
+      path: '/inventory/pricelists'
+      fullPath: '/inventory/pricelists'
+      preLoaderRoute: typeof AuthenticatedInventoryPricelistsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/credit-notes': {
+      id: '/_authenticated/sales/credit-notes'
+      path: '/sales/credit-notes'
+      fullPath: '/sales/credit-notes'
+      preLoaderRoute: typeof AuthenticatedSalesCreditNotesLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/customers': {
+      id: '/_authenticated/sales/customers'
+      path: '/sales/customers'
+      fullPath: '/sales/customers'
+      preLoaderRoute: typeof AuthenticatedSalesCustomersLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/deliveryChallans': {
+      id: '/_authenticated/sales/deliveryChallans'
+      path: '/sales/deliveryChallans'
+      fullPath: '/sales/deliveryChallans'
+      preLoaderRoute: typeof AuthenticatedSalesDeliveryChallansLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/invoices': {
+      id: '/_authenticated/sales/invoices'
+      path: '/sales/invoices'
+      fullPath: '/sales/invoices'
+      preLoaderRoute: typeof AuthenticatedSalesInvoicesLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/packages': {
+      id: '/_authenticated/sales/packages'
+      path: '/sales/packages'
+      fullPath: '/sales/packages'
+      preLoaderRoute: typeof AuthenticatedSalesPackagesLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/paymentsReceived': {
+      id: '/_authenticated/sales/paymentsReceived'
+      path: '/sales/paymentsReceived'
+      fullPath: '/sales/paymentsReceived'
+      preLoaderRoute: typeof AuthenticatedSalesPaymentsReceivedLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/salesOrders': {
+      id: '/_authenticated/sales/salesOrders'
+      path: '/sales/salesOrders'
+      fullPath: '/sales/salesOrders'
+      preLoaderRoute: typeof AuthenticatedSalesSalesOrdersLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/salesReturns': {
+      id: '/_authenticated/sales/salesReturns'
+      path: '/sales/salesReturns'
+      fullPath: '/sales/salesReturns'
+      preLoaderRoute: typeof AuthenticatedSalesSalesReturnsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/sales/shipments': {
+      id: '/_authenticated/sales/shipments'
+      path: '/sales/shipments'
+      fullPath: '/sales/shipments'
+      preLoaderRoute: typeof AuthenticatedSalesShipmentsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
     '/_authenticated/apps/': {
       id: '/_authenticated/apps/'
       path: '/apps'
@@ -379,6 +647,19 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedInventoryAdjustmentsLazyRoute: typeof AuthenticatedInventoryAdjustmentsLazyRoute
+  AuthenticatedInventoryItemsLazyRoute: typeof AuthenticatedInventoryItemsLazyRoute
+  AuthenticatedInventoryItemsGroupsLazyRoute: typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  AuthenticatedInventoryPricelistsLazyRoute: typeof AuthenticatedInventoryPricelistsLazyRoute
+  AuthenticatedSalesCreditNotesLazyRoute: typeof AuthenticatedSalesCreditNotesLazyRoute
+  AuthenticatedSalesCustomersLazyRoute: typeof AuthenticatedSalesCustomersLazyRoute
+  AuthenticatedSalesDeliveryChallansLazyRoute: typeof AuthenticatedSalesDeliveryChallansLazyRoute
+  AuthenticatedSalesInvoicesLazyRoute: typeof AuthenticatedSalesInvoicesLazyRoute
+  AuthenticatedSalesPackagesLazyRoute: typeof AuthenticatedSalesPackagesLazyRoute
+  AuthenticatedSalesPaymentsReceivedLazyRoute: typeof AuthenticatedSalesPaymentsReceivedLazyRoute
+  AuthenticatedSalesSalesOrdersLazyRoute: typeof AuthenticatedSalesSalesOrdersLazyRoute
+  AuthenticatedSalesSalesReturnsLazyRoute: typeof AuthenticatedSalesSalesReturnsLazyRoute
+  AuthenticatedSalesShipmentsLazyRoute: typeof AuthenticatedSalesShipmentsLazyRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
@@ -389,6 +670,27 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedInventoryAdjustmentsLazyRoute:
+    AuthenticatedInventoryAdjustmentsLazyRoute,
+  AuthenticatedInventoryItemsLazyRoute: AuthenticatedInventoryItemsLazyRoute,
+  AuthenticatedInventoryItemsGroupsLazyRoute:
+    AuthenticatedInventoryItemsGroupsLazyRoute,
+  AuthenticatedInventoryPricelistsLazyRoute:
+    AuthenticatedInventoryPricelistsLazyRoute,
+  AuthenticatedSalesCreditNotesLazyRoute:
+    AuthenticatedSalesCreditNotesLazyRoute,
+  AuthenticatedSalesCustomersLazyRoute: AuthenticatedSalesCustomersLazyRoute,
+  AuthenticatedSalesDeliveryChallansLazyRoute:
+    AuthenticatedSalesDeliveryChallansLazyRoute,
+  AuthenticatedSalesInvoicesLazyRoute: AuthenticatedSalesInvoicesLazyRoute,
+  AuthenticatedSalesPackagesLazyRoute: AuthenticatedSalesPackagesLazyRoute,
+  AuthenticatedSalesPaymentsReceivedLazyRoute:
+    AuthenticatedSalesPaymentsReceivedLazyRoute,
+  AuthenticatedSalesSalesOrdersLazyRoute:
+    AuthenticatedSalesSalesOrdersLazyRoute,
+  AuthenticatedSalesSalesReturnsLazyRoute:
+    AuthenticatedSalesSalesReturnsLazyRoute,
+  AuthenticatedSalesShipmentsLazyRoute: AuthenticatedSalesShipmentsLazyRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
@@ -417,6 +719,19 @@ export interface FileRoutesByFullPath {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
+  '/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
+  '/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
+  '/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
+  '/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
+  '/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
+  '/sales/invoices': typeof AuthenticatedSalesInvoicesLazyRoute
+  '/sales/packages': typeof AuthenticatedSalesPackagesLazyRoute
+  '/sales/paymentsReceived': typeof AuthenticatedSalesPaymentsReceivedLazyRoute
+  '/sales/salesOrders': typeof AuthenticatedSalesSalesOrdersLazyRoute
+  '/sales/salesReturns': typeof AuthenticatedSalesSalesReturnsLazyRoute
+  '/sales/shipments': typeof AuthenticatedSalesShipmentsLazyRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
@@ -441,6 +756,19 @@ export interface FileRoutesByTo {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
+  '/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
+  '/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
+  '/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
+  '/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
+  '/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
+  '/sales/invoices': typeof AuthenticatedSalesInvoicesLazyRoute
+  '/sales/packages': typeof AuthenticatedSalesPackagesLazyRoute
+  '/sales/paymentsReceived': typeof AuthenticatedSalesPaymentsReceivedLazyRoute
+  '/sales/salesOrders': typeof AuthenticatedSalesSalesOrdersLazyRoute
+  '/sales/salesReturns': typeof AuthenticatedSalesSalesReturnsLazyRoute
+  '/sales/shipments': typeof AuthenticatedSalesShipmentsLazyRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
@@ -468,6 +796,19 @@ export interface FileRoutesById {
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/_authenticated/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
+  '/_authenticated/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
+  '/_authenticated/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/_authenticated/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
+  '/_authenticated/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
+  '/_authenticated/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
+  '/_authenticated/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
+  '/_authenticated/sales/invoices': typeof AuthenticatedSalesInvoicesLazyRoute
+  '/_authenticated/sales/packages': typeof AuthenticatedSalesPackagesLazyRoute
+  '/_authenticated/sales/paymentsReceived': typeof AuthenticatedSalesPaymentsReceivedLazyRoute
+  '/_authenticated/sales/salesOrders': typeof AuthenticatedSalesSalesOrdersLazyRoute
+  '/_authenticated/sales/salesReturns': typeof AuthenticatedSalesSalesReturnsLazyRoute
+  '/_authenticated/sales/shipments': typeof AuthenticatedSalesShipmentsLazyRoute
   '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
@@ -496,6 +837,19 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/inventory/adjustments'
+    | '/inventory/items'
+    | '/inventory/itemsGroups'
+    | '/inventory/pricelists'
+    | '/sales/credit-notes'
+    | '/sales/customers'
+    | '/sales/deliveryChallans'
+    | '/sales/invoices'
+    | '/sales/packages'
+    | '/sales/paymentsReceived'
+    | '/sales/salesOrders'
+    | '/sales/salesReturns'
+    | '/sales/shipments'
     | '/apps'
     | '/chats'
     | '/help-center'
@@ -519,6 +873,19 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/inventory/adjustments'
+    | '/inventory/items'
+    | '/inventory/itemsGroups'
+    | '/inventory/pricelists'
+    | '/sales/credit-notes'
+    | '/sales/customers'
+    | '/sales/deliveryChallans'
+    | '/sales/invoices'
+    | '/sales/packages'
+    | '/sales/paymentsReceived'
+    | '/sales/salesOrders'
+    | '/sales/salesReturns'
+    | '/sales/shipments'
     | '/apps'
     | '/chats'
     | '/help-center'
@@ -544,6 +911,19 @@ export interface FileRouteTypes {
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
+    | '/_authenticated/inventory/adjustments'
+    | '/_authenticated/inventory/items'
+    | '/_authenticated/inventory/itemsGroups'
+    | '/_authenticated/inventory/pricelists'
+    | '/_authenticated/sales/credit-notes'
+    | '/_authenticated/sales/customers'
+    | '/_authenticated/sales/deliveryChallans'
+    | '/_authenticated/sales/invoices'
+    | '/_authenticated/sales/packages'
+    | '/_authenticated/sales/paymentsReceived'
+    | '/_authenticated/sales/salesOrders'
+    | '/_authenticated/sales/salesReturns'
+    | '/_authenticated/sales/shipments'
     | '/_authenticated/apps/'
     | '/_authenticated/chats/'
     | '/_authenticated/help-center/'
@@ -609,6 +989,19 @@ export const routeTree = rootRoute
       "children": [
         "/_authenticated/settings",
         "/_authenticated/",
+        "/_authenticated/inventory/adjustments",
+        "/_authenticated/inventory/items",
+        "/_authenticated/inventory/itemsGroups",
+        "/_authenticated/inventory/pricelists",
+        "/_authenticated/sales/credit-notes",
+        "/_authenticated/sales/customers",
+        "/_authenticated/sales/deliveryChallans",
+        "/_authenticated/sales/invoices",
+        "/_authenticated/sales/packages",
+        "/_authenticated/sales/paymentsReceived",
+        "/_authenticated/sales/salesOrders",
+        "/_authenticated/sales/salesReturns",
+        "/_authenticated/sales/shipments",
         "/_authenticated/apps/",
         "/_authenticated/chats/",
         "/_authenticated/help-center/",
@@ -676,6 +1069,58 @@ export const routeTree = rootRoute
     "/_authenticated/settings/notifications": {
       "filePath": "_authenticated/settings/notifications.tsx",
       "parent": "/_authenticated/settings"
+    },
+    "/_authenticated/inventory/adjustments": {
+      "filePath": "_authenticated/inventory/adjustments.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/inventory/items": {
+      "filePath": "_authenticated/inventory/items.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/inventory/itemsGroups": {
+      "filePath": "_authenticated/inventory/itemsGroups.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/inventory/pricelists": {
+      "filePath": "_authenticated/inventory/pricelists.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/credit-notes": {
+      "filePath": "_authenticated/sales/credit-notes.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/customers": {
+      "filePath": "_authenticated/sales/customers.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/deliveryChallans": {
+      "filePath": "_authenticated/sales/deliveryChallans.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/invoices": {
+      "filePath": "_authenticated/sales/invoices.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/packages": {
+      "filePath": "_authenticated/sales/packages.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/paymentsReceived": {
+      "filePath": "_authenticated/sales/paymentsReceived.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/salesOrders": {
+      "filePath": "_authenticated/sales/salesOrders.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/salesReturns": {
+      "filePath": "_authenticated/sales/salesReturns.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/sales/shipments": {
+      "filePath": "_authenticated/sales/shipments.lazy.tsx",
+      "parent": "/_authenticated"
     },
     "/_authenticated/apps/": {
       "filePath": "_authenticated/apps/index.tsx",
